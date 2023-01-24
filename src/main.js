@@ -1,5 +1,5 @@
-import routes from './js/routes';
-import HomeComponent from './js/components/homeComponent';
+import routes from './js/routes.js';
+import HomeComponent from './js/components/homeComponent.js';
 
 const router = VueRouter.createRouter({
   routes
