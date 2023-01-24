@@ -21,7 +21,16 @@ const router = VueRouter.createRouter({
 })
 
 // 5. Create and mount the root instance.
-const app = Vue.createApp({})
+const app = Vue.createApp({
+  template: `
+    <h1>Hello App!</h1>
+    <p>
+      <router-link to="/">Go to Home</router-link>
+      <router-link to="/about">Go to About</router-link>
+    </p>
+    <router-view></router-view>
+  `
+})
 // Make sure to _use_ the router instance to make the
 // whole app router-aware.
 app.use(router)
