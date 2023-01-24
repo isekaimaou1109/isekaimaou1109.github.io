@@ -1,5 +1,5 @@
-import AuthorComponent from './components/authorComponent'
-import HomeComponent from './components/homeComponent'
+import AuthorComponent from './components/authorComponent.js'
+import HomeComponent from './components/homeComponent.js'
 
 export default [
   { path: '/', component: HomeComponent },
