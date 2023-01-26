@@ -4,18 +4,71 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script defer src="https://unpkg.com/vue-router@4.1.6/dist/vue-router.global.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/vuetify@3.1.2/dist/vuetify.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.1.2/dist/vuetify.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.6.5/vue-router.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kavoon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/solid.min.css" />
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/homepage.css">
+    <script defer src="./src/main.js" type="module"></script>
     <title>Document</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app" class="h-100">
+      <el-container class="h-100">
+        <el-header height="90px" class="el-header-nav el-row--flex is-justify-space-between is-align-center" style="font-size: 12px">
+          <el-row>
+            <el-image
+              class="h-100"
+              fit="cover"
+              :src="url"
+            >
+            </el-image>
+          </el-row>
 
-    <script defer src="./src/js/components/authorComponent.js" type="module"></script>
-    <script defer src="./src/js/components/homeComponent.js" type="module"></script>
-    <script defer src="./src/js/routes.js" type="module"></script>
-    <script defer src="./src/main.js" type="module"></script>
+          <el-row v-if="currentWidth > 992" :gutter="20">
+            <el-button type="text" v-for="({ text, path }) in data" :key="path">
+              <router-link :to="path">{{ text }}</router-link>
+            </el-button>
+            <el-button type="text">
+              <span><i class="fa-solid fa-language"></i></span>
+            </el-button>
+          </el-row>
+          <el-row v-if="currentWidth > 992">
+            <el-button type="primary" round>Let's talk</el-button>
+          </el-row>
+          <el-dropdown v-if="currentWidth < 992" class="ph-20" style="align-self: center;">
+            <span class="el-dropdown-link">
+              <i class="fa-solid fa-list"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item :divided="i === data.length - 1" v-for="(item, i) in data" :key="item?.text">
+                <router-link :to="item?.path">
+                  {{ item?.text }}
+                </router-link>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </el-header>
+          
+        <el-main>
+          <section class="homepage-content">
+            <router-view></router-view>
+          </section>
+        </el-main>
+
+        <footer class="el-row--flex is-justify-center is-align-center el-flex-1 el-gap-30">
+          <el-link :href="footerLink.url" v-for="footerLink in footerLinks" :key="footerLink.class">
+            <i :class="footerLink.class"></i>
+          </el-link>
+        </footer>
+      </el-container>
+    </div>
   </body>
 </html>

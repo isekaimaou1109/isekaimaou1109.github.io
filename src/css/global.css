@@ -1,0 +1,88 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+}
+
+a { text-decoration: none !important; }
+.mv-15 { margin: 0px 15px; }
+.h-100 { height: 100%; }
+.el-flex-1 { flex: 1; }
+.el-gap-30 { gap: 30px; }
+.el-link.is-underline:hover:after { border-bottom: 0 !important; }
+.ph-20 { padding: 0 20px !important; }
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }
+.bottom-50 { bottom: 50px; }
+
+.el-header {
+  padding: 25px 75px !important;
+}
+
+.el-header-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.el-header-nav .el-row:nth-child(2) .el-button {
+  margin: 0px 15px;
+}
+
+.el-header-nav .el-row:nth-child(2) .el-button span a {
+  color: #606266 !important;
+}
+
+.el-header-nav .el-row:nth-child(2) .el-button span a:focus, 
+.el-header-nav .el-row:nth-child(2) .el-button span a:active {
+  font-weight: bold;
+  color: #000000 !important;
+}
+
+.el-dropdown:hover {
+  cursor: pointer;
+}
+
+
+.homepage-content {
+  height: 500px;
+  background: url(https://i.ibb.co/Qrg2jtT/info-img-1-removebg-preview.png) 100% 99%;
+  background-repeat: no-repeat;
+  background-size: 300px 200px;
+}
+
+footer {
+  background: rgb(82,77,167);
+  background: linear-gradient(90deg, rgba(82,77,167,1) 0%, rgba(0,73,142,1) 35%, rgba(58,153,172,1) 100%);
+}
+
+footer a {
+  transform: rotate(0) scale(1);
+  transition: transform 1s ease;
+  align-self: center;
+}
+
+footer a span i {
+  color: white;
+  font-size: 3rem;
+}
+
+footer a:hover {
+  transform: rotate(135deg) scale(1.5);
+}
+
+@media screen and (max-width: 992px) {
+  .el-header-nav .el-row:nth-child(2),
+  .el-header-nav .el-row:nth-child(3) {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 468px) {
+  .el-header {
+    padding: 20px !important;
+  }
+
+  .bottom-50 { bottom: auto !important; }
+}
